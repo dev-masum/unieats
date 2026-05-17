@@ -1,0 +1,97 @@
+UNIEATS
+Sprint Squad
+
+ 
+
+Core Functionality:  The UniEats Smart Campus Food Ordering System provides an efficient digital platform where students can browse canteen menus, pre-order meals, and schedule collection times. This reduces waiting queues, saves time, and helps students manage their daily activities more effectively, supporting better focus on academic work.
+
+Team Members:
+ Suriya         – AdminLogs 
+Maher         – User Management
+Sabrina       – Menu Management
+Sahadat      – Order Management
+Shubhra      – Cart & Checkout	
+
+
+
+System Overview:
+UniEats is a web-based food ordering system for university students. On the front end, users interact with the website through pages such as login, menu viewing, cart management, order confirmation, and the admin dashboard. This is the part of the system that users and staff can see and use directly. Students use the front end to sign in, browse food, add items to the cart, and place orders. Staff or admin use the front end to view logs and monitor system activity.
+Behind the visible pages, the system uses a middle layer made up of PHP classes and processing logic. This layer controls how the website works. For example, when a user opens the menu page, the middle layer receives that request, runs the correct class and method, and decides what data must be collected from the database. In the same way, when a user adds an item to the cart or places an order, the middle layer handles the system logic, validation, and communication between the page and the database.
+The back end is the relational database, which stores all the data used by the system. Our database contains the tables Users, Menu, Cart, Orders, and AdminLogs. The Users and Menu tables act as parent tables, while Cart, Orders, and AdminLogs depend on them through foreign keys. The back end stores account data, menu items, selected cart items, final orders, payment details within orders, and admin activity logs.
+These three layers work together in sequence. The front end collects input from the user, the middle layer processes that request and applies the system logic, and the back end stores or retrieves the required data. For example, if a student logs in and places an order, the front end shows the form, the middle layer validates the details and creates the order, and the back end stores that order in the database. This structure makes the system organised, easier to maintain, and consistent with the required three-layer architecture. 
+
+
+UniEats has three layers. The front end is the part users see, such as login, menu, cart, order, and admin pages. The middle layer is the PHP logic and classes that process requests from those pages. The back end is our relational database, where Users, Menu, Cart, Orders, and AdminLogs are stored. So the front end takes input, the middle layer processes it, and the back end stores or returns the data.
+
+
+
+For example, when a user adds food to the cart, the front end shows the menu page and add-to-cart button. The middle layer handles the request and checks the selected item. The back end then stores that information in the Cart table. The same pattern applies to login, menu viewing, order placement, and admin monitoring.
+
+
+Allocated Component:	Menu Management System 
+Developer: Mst Sabrina Nasrin Jarin		
+Overview: The Menu Management System is responsible for handling all food items available within the application. It provides functionality to create, read, update, and delete (CRUD) menu items, ensuring that the system always maintains accurate and up-to-date information. Each item includes details such as name, price, category, availability, createddate and description, which are stored in the database and retrieved when needed.
+This component also supports filtering and listing of menu items, allowing users to easily browse available options based on categories or availability status. By maintaining consistency between the database and the user interface, the system ensures a smooth and reliable experience for both administrators and end users.
+
+
+
+
+
+
+
+Table Name: Menu Management Table
+Table Design:
+Attribute Name	Data Type	        Key	Description
+MenuID	INT	         PK	Unique ID for menu item
+ItemName	VARCHAR (100)	         _	
+Name of food item
+
+Price	DECIMAL (6,2)	         _	Price of item
+Category	VARCHAR (50)	         _	Food category
+Availability	BOOLEAN	         _	Availability status
+CreatedDate	DATE	         _	Date added
+Description	VARCHAR (150)	         _	Item details
+
+
+
+
+Draft Entity Relationship Diagram
+UNIEATS – USE CASE DESCRIPTION
+Use Case Name:
+Place Food Order
+Actor:
+User
+Goal:
+To allow a user to log in, view menu items, add items to the cart, and place an order in the UniEats system.
+Description:
+This use case describes the main process of ordering food in the UniEats system. A user logs into the system, browses available menu items, selects food, adds items to the cart, and confirms the order. The system then creates a record on the Orders table and stores payment details within the same order record. Any later admin-related activity connected to that order may be recorded in the AdminLogs table.
+Pre-Conditions:
+•	The user account already exists in the Users table. 
+•	Menu items are available in the Menu table. 
+•	The database connection is active. 
+Trigger:
+The user wants to order food using the UniEats system.
+Main Success Scenario:
+1.	The user opens the UniEats system. 
+2.	The user logs into the system. 
+3.	The system validates the user’s login details using the Users table. 
+4.	The user opens the menu page. 
+5.	The system displays available menu items from the Menu table. 
+6.	The user selects one or more food items. 
+7.	The system adds the selected items to the Cart table. 
+8.	The user reviews the cart contents. 
+9.	The user confirms the order. 
+10.	The system creates a new record in the Orders table. 
+11.	The system stores payment method and payment status in the same order record. 
+12.	The system confirms that the order has been placed successfully. 
+13.	If required, related admin activity can later be recorded in the AdminLogs table. 
+Post-Conditions:
+•	Selected items are stored in the Cart table. 
+•	A confirmed order is stored on the Orders table. 
+•	Payment information is stored on the Orders table. 
+•	Order-related admin activity may be recorded in the AdminLogs table. 
+Alternative / Exception Scenarios:
+•	If the login details are incorrect, the system denies access and shows an error message. 
+•	If no menu items are available, the user cannot select food. 
+•	If the cart is empty, the order cannot be placed. 
+•	If payment is not completed, the order remains stored with the relevant payment status.

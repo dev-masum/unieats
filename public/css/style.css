@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main>* {
+    margin-bottom: 24px;
+}
+
+header p {
+    margin: 4px 0 0;
+    color: #555;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0652dd;
+    border: 1px solid #0652dd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #0652dd;
+    color: white;
+}
+
+.card,
+.admin-panel,
+.checkout-summary,
+.checkout-form,
+.order-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.card h2,
+.admin-panel h2,
+.checkout-summary h2,
+.checkout-form h2,
+.order-card h3 {
+    margin-top: 0;
+}
+
+.card form>*+*,
+.checkout-form form>*+* {
+    margin-top: 14px;
+}
+
+.menu-card form {
+    margin-top: 16px;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+button,
+.button {
+    background-color: #0652dd;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.card form button,
+.menu-card form button,
+.checkout-form form button {
+    margin-top: 12px;
+}
+
+button:hover,
+.button:hover {
+    background-color: #0b3fc1;
+}
+
+.button.secondary {
+    background-color: #444;
+}
+
+.alert,
+.success {
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    border-radius: 8px;
+}
+
+.alert {
+    background-color: #ffe0e0;
+    color: #a60000;
+}
+
+.success {
+    background-color: #e7ffe7;
+    color: #1f7a1f;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.menu-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #ebeff4;
+}
+
+.menu-card h3 {
+    margin-top: 0;
+}
+
+.menu-card .meta {
+    margin: 4px 0 10px;
+    color: #666;
+}
+
+.cart-table,
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td,
+.admin-table th,
+.admin-table td {
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    text-align: left;
+}
+
+.cart-table th,
+.admin-table th {
+    background-color: #f8fafc;
+}
+
+.inline-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.inline-form input[type="number"] {
+    width: 80px;
+}
+
+.checkout-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.orders-list,
+.admin-log-list {
+    display: grid;
+    gap: 16px;
+}
+
+.order-card {
+    background: white;
+}
+
+.admin-log-list li {
+    background-color: #f7f9fd;
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

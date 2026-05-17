@@ -66,7 +66,7 @@ $total = $cartModel->getTotalAmount($userId);
                         <?php foreach ($items as $item): ?>
                             <tr>
                                 <td><?= escape($item['ItemName']) ?></td>
-                                <td>₦<?= number_format($item['Price'], 2) ?></td>
+                                <td>$<?= number_format($item['Price'], 2) ?></td>
                                 <td>
                                     <form method="post" action="cart.php" class="inline-form">
                                         <input type="hidden" name="cart_id" value="<?= escape($item['CartID']) ?>">
@@ -74,7 +74,7 @@ $total = $cartModel->getTotalAmount($userId);
                                         <button type="submit" name="update">Update</button>
                                     </form>
                                 </td>
-                                <td>₦<?= number_format($item['Price'] * $item['Quantity'], 2) ?></td>
+                                <td>$<?= number_format($item['Price'] * $item['Quantity'], 2) ?></td>
                                 <td>
                                     <form method="post" action="cart.php">
                                         <input type="hidden" name="cart_id" value="<?= escape($item['CartID']) ?>">
@@ -87,7 +87,7 @@ $total = $cartModel->getTotalAmount($userId);
                     <tfoot>
                         <tr>
                             <td colspan="3">Total</td>
-                            <td colspan="2">₦<?= number_format($total, 2) ?></td>
+                            <td colspan="2">$<?= number_format($total, 2) ?></td>
                         </tr>
                     </tfoot>
                 </table>

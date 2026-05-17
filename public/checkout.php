@@ -82,15 +82,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <tr>
                                     <td><?= escape($item['ItemName']) ?></td>
                                     <td><?= escape($item['Quantity']) ?></td>
-                                    <td>₦<?= number_format($item['Price'], 2) ?></td>
-                                    <td>₦<?= number_format($item['Price'] * $item['Quantity'], 2) ?></td>
+                                    <td>$<?= number_format($item['Price'], 2) ?></td>
+                                    <td>$<?= number_format($item['Price'] * $item['Quantity'], 2) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="3">Total</td>
-                                <td>₦<?= number_format($total, 2) ?></td>
+                                <td>$<?= number_format($total, 2) ?></td>
                             </tr>
                         </tfoot>
                     </table>

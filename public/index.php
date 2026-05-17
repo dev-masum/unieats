@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Smart campus food ordering</p>
         </header>
         <main>
-            <div class="card">
+            <div class="card" style="position: relative;">
+                <a href="admin-login.php" target="_blank" class="button secondary" style="position: absolute; top: 24px; right: 24px; text-decoration: none; padding: 6px 12px; font-size: 0.85rem;">Admin Login</a>
                 <h2>Login</h2>
                 <?php if ($message): ?>
                     <div class="alert"><?= escape($message) ?></div>
@@ -58,9 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button type="submit">Login</button>
                 </form>
                 <p>Don’t have an account? <a href="register.php">Register here</a>.</p>
-                <p style="text-align: center; margin-top: 20px;">
-                    <a href="admin-login.php" target="_blank" class="button secondary" style="text-decoration: none;">Login as Admin</a>
-                </p>
             </div>
         </main>
     </div>

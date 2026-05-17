@@ -39,7 +39,7 @@ $orders = $orderModel->getOrdersByUser($userId);
                             <h3>Order #<?= escape($order['OrderID']) ?></h3>
                             <p><strong>Date:</strong> <?= escape($order['OrderDate']) ?></p>
                             <p><strong>Collection:</strong> <?= escape($order['CollectionTime']) ?></p>
-                            <p><strong>Total:</strong> ₦<?= number_format($order['TotalAmount'], 2) ?></p>
+                            <p><strong>Total:</strong> $<?= number_format($order['TotalAmount'], 2) ?></p>
                             <p><strong>Status:</strong> <?= escape($order['OrderStatus']) ?> /
                                 <?= escape($order['PaymentStatus']) ?></p>
                             <details>
@@ -47,7 +47,7 @@ $orders = $orderModel->getOrdersByUser($userId);
                                 <ul>
                                     <?php foreach ($orderModel->getOrderItems((int) $order['OrderID']) as $item): ?>
                                         <li><?= escape($item['ItemName']) ?> x <?= escape($item['Quantity']) ?>
-                                            (₦<?= number_format($item['PriceAtOrder'], 2) ?>)</li>
+                                            ($<?= number_format($item['PriceAtOrder'], 2) ?>)</li>
                                     <?php endforeach; ?>
                                 </ul>
                             </details>

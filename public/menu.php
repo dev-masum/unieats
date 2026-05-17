@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php foreach ($items as $item): ?>
                         <div class="menu-card">
                             <h3><?= escape($item['ItemName']) ?></h3>
-                            <p class="meta"><?= escape($item['Category']) ?> • ₦<?= number_format($item['Price'], 2) ?></p>
+                            <p class="meta"><?= escape($item['Category']) ?> • $<?= number_format($item['Price'], 2) ?></p>
                             <p><?= escape($item['Description']) ?></p>
                             <p>Status: <?= $item['Availability'] ? 'Available' : 'Unavailable' ?></p>
                             <?php if ($item['Availability']): ?>

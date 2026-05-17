@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <tr>
                                     <td><?= escape($order['OrderID']) ?></td>
                                     <td><?= escape($order['Username']) ?></td>
-                                    <td>₦<?= number_format($order['TotalAmount'], 2) ?></td>
+                                    <td>$<?= number_format($order['TotalAmount'], 2) ?></td>
                                     <td><?= escape($order['CollectionTime']) ?></td>
                                     <td><?= escape($order['OrderStatus']) ?></td>
                                     <td><?= escape($order['PaymentStatus']) ?></td>

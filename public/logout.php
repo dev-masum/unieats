@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/session.php';
+$isAdmin = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin';
+
 $_SESSION = [];
 if (ini_get('session.use_cookies')) {
     $params = session_get_cookie_params();
@@ -14,5 +16,10 @@ if (ini_get('session.use_cookies')) {
     );
 }
 session_destroy();
-header('Location: index.php');
+
+if ($isAdmin) {
+    header('Location: admin-login.php');
+} else {
+    header('Location: index.php');
+}
 exit;

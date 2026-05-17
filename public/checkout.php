@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../src/functions.php';
 requireLogin();
+requireStudent();
 
 $db = createDb()->getConnection();
 $orderModel = new Order($db);
@@ -54,9 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="menu.php">Menu</a>
                 <a href="cart.php">Cart</a>
                 <a href="orders.php">Orders</a>
-                <?php if ($_SESSION['user_type'] === 'admin'): ?>
-                    <a href="admin-dashboard.php">Admin</a>
-                <?php endif; ?>
                 <a href="logout.php">Logout</a>
             </nav>
         </header>

@@ -34,6 +34,14 @@ function requireAdmin(): void
     }
 }
 
+function requireStudent(): void
+{
+    if (empty($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
+        header('Location: admin-login.php');
+        exit;
+    }
+}
+
 function escape(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');

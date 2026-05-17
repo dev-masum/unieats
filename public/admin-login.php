@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $user = $userModel->login($username, $password);
         if ($user) {
-            if ($user['UserType'] === 'student') {
+            if ($user['UserType'] === 'admin') {
                 $_SESSION['user_id'] = (int) $user['UserID'];
                 $_SESSION['user_type'] = $user['UserType'];
-                header('Location: menu.php');
+                header('Location: admin-dashboard.php');
                 exit;
             } else {
-                $message = 'Please use the Admin login page.';
+                $message = 'Invalid admin credentials.';
             }
         } else {
             $message = 'Invalid username or password.';
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <title>UniEats Login</title>
+    <title>UniEats Admin Login</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -42,25 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <header>
             <h1>UniEats</h1>
-            <p>Smart campus food ordering</p>
+            <p>Admin Control Panel</p>
         </header>
         <main>
             <div class="card">
-                <h2>Login</h2>
+                <h2>Admin Login</h2>
                 <?php if ($message): ?>
                     <div class="alert"><?= escape($message) ?></div>
                 <?php endif; ?>
-                <form method="post" action="index.php">
-                    <label for="username">Username</label>
+                <form method="post" action="admin-login.php">
+                    <label for="username">Admin Username</label>
                     <input type="text" id="username" name="username" required>
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">Login</button>
                 </form>
-                <p>Don’t have an account? <a href="register.php">Register here</a>.</p>
-                <p style="text-align: center; margin-top: 20px;">
-                    <a href="admin-login.php" target="_blank" class="button secondary" style="text-decoration: none;">Login as Admin</a>
-                </p>
             </div>
         </main>
     </div>

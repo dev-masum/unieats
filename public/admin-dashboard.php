@@ -74,25 +74,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <td><?= escape($order['OrderStatus']) ?></td>
                                     <td><?= escape($order['PaymentStatus']) ?></td>
                                     <td>
-                                        <form method="post" action="admin-dashboard.php" class="inline-form">
+                                        <form method="post" action="admin-dashboard.php" style="display: flex; flex-direction: column; gap: 8px; min-width: 140px;">
                                             <input type="hidden" name="order_id" value="<?= escape($order['OrderID']) ?>">
-                                            <div style="display: flex; align-items: center; gap: 4px;">
-                                                <label for="order_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.85rem;">Status:</label>
-                                                <select id="order_status_<?= $order['OrderID'] ?>" name="order_status" aria-label="Order Status" title="Update Order Status">
+                                            
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <label for="order_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.8rem; color: #666; text-transform: uppercase; font-weight: bold;">Status</label>
+                                                <select id="order_status_<?= $order['OrderID'] ?>" name="order_status" aria-label="Order Status" title="Update Order Status" style="padding: 6px; font-size: 0.9rem;">
                                                     <?php foreach (['placed', 'confirmed', 'ready', 'collected', 'cancelled'] as $status): ?>
                                                         <option value="<?= $status ?>" <?= $status === $order['OrderStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
-                                            <div style="display: flex; align-items: center; gap: 4px;">
-                                                <label for="payment_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.85rem;">Payment:</label>
-                                                <select id="payment_status_<?= $order['OrderID'] ?>" name="payment_status" aria-label="Payment Status" title="Update Payment Status">
+                                            
+                                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                                <label for="payment_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.8rem; color: #666; text-transform: uppercase; font-weight: bold;">Payment</label>
+                                                <select id="payment_status_<?= $order['OrderID'] ?>" name="payment_status" aria-label="Payment Status" title="Update Payment Status" style="padding: 6px; font-size: 0.9rem;">
                                                     <?php foreach (['pending', 'completed', 'failed'] as $status): ?>
                                                         <option value="<?= $status ?>" <?= $status === $order['PaymentStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
-                                            <button type="submit">Update</button>
+                                            
+                                            <button type="submit" style="padding: 6px 12px; font-size: 0.9rem; margin-top: 4px;">Update</button>
                                         </form>
                                     </td>
                                 </tr>

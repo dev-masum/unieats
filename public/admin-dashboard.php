@@ -55,13 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <table class="admin-table">
                         <thead>
                             <tr>
-                                <th>Order</th>
-                                <th>User</th>
-                                <th>Total</th>
-                                <th>Collection</th>
-                                <th>Status</th>
-                                <th>Payment</th>
-                                <th>Action</th>
+                                <th>Order ID</th>
+                                <th>Student</th>
+                                <th>Total Amount</th>
+                                <th>Collection Time</th>
+                                <th>Order Status</th>
+                                <th>Payment Status</th>
+                                <th>Manage Order</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,16 +76,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <td>
                                         <form method="post" action="admin-dashboard.php" class="inline-form">
                                             <input type="hidden" name="order_id" value="<?= escape($order['OrderID']) ?>">
-                                            <select name="order_status">
-                                                <?php foreach (['placed', 'confirmed', 'ready', 'collected', 'cancelled'] as $status): ?>
-                                                    <option value="<?= $status ?>" <?= $status === $order['OrderStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <select name="payment_status">
-                                                <?php foreach (['pending', 'completed', 'failed'] as $status): ?>
-                                                    <option value="<?= $status ?>" <?= $status === $order['PaymentStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <label for="order_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.85rem;">Status:</label>
+                                                <select id="order_status_<?= $order['OrderID'] ?>" name="order_status" aria-label="Order Status" title="Update Order Status">
+                                                    <?php foreach (['placed', 'confirmed', 'ready', 'collected', 'cancelled'] as $status): ?>
+                                                        <option value="<?= $status ?>" <?= $status === $order['OrderStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 4px;">
+                                                <label for="payment_status_<?= $order['OrderID'] ?>" style="margin: 0; font-size: 0.85rem;">Payment:</label>
+                                                <select id="payment_status_<?= $order['OrderID'] ?>" name="payment_status" aria-label="Payment Status" title="Update Payment Status">
+                                                    <?php foreach (['pending', 'completed', 'failed'] as $status): ?>
+                                                        <option value="<?= $status ?>" <?= $status === $order['PaymentStatus'] ? 'selected' : '' ?>><?= ucfirst($status) ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
                                             <button type="submit">Update</button>
                                         </form>
                                     </td>
@@ -103,9 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <ul class="admin-log-list">
                         <?php foreach ($logs as $log): ?>
                             <li>
-                                <strong><?= escape($log['AdminName']) ?></strong> — <?= escape($log['Action']) ?>
-                                <span><?= escape($log['Description']) ?></span>
-                                <em><?= escape($log['Timestamp']) ?></em>
+                                <strong>Admin:</strong> <?= escape($log['AdminName']) ?> |
+                                <strong>Action:</strong> <?= escape($log['Action']) ?><br>
+                                <strong>Details:</strong> <span><?= escape($log['Description']) ?></span><br>
+                                <strong>Date/Time:</strong> <em><?= escape($log['Timestamp']) ?></em>
                             </li>
                         <?php endforeach; ?>
                     </ul>
